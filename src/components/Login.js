@@ -4,7 +4,6 @@ import background from '../the_netflix_login_background.jpg';
 import {checkValidateData} from '../utils/validate';
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
@@ -14,52 +13,62 @@ const Login = () => {
   const password = useRef(null);
   const fullname = useRef(null);
   const [errorMessage,setErrorMessage]=useState(null);
-  const navigate = useNavigate();
   const dispatch= useDispatch();
 
   const toggleforSignIn = () => {
     setisSignInForm(!isSignInForm);
+    setErrorMessage(null);
   };
 
   const handleButtonClick = () => {
-      const name = fullname?.current?.value;
-      const message = checkValidateData(email.current.value, password.current.value, name);
-      setErrorMessage(message);
+  const name = fullname?.current?.value;
+  const emailVal = email.current.value;
+  const passwordVal = password.current.value;
 
-      if (message) return;
+  const message = checkValidateData(emailVal, passwordVal, !isSignInForm ? name : null);
+  setErrorMessage(message);
 
-      if (!isSignInForm) {
-        // Sign Up Logic
-        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            return updateProfile(user, {
-              displayName: name,
-            });
-          })
-          .then(() => {
-            const {uid,email,displayName,photoUrl}=auth.currentUser;
-            dispatch(addUser({uid:uid, email:email, displayName:displayName}));
-            navigate('/browse');
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            setErrorMessage(errorCode + "-" + errorMessage);
-          });
-      } else {
-        // Sign In Logic
-        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-          .then((userCredential) => {
-            navigate("/browse");
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            setErrorMessage(errorCode + "-" + errorMessage);
-          });
-      }
-    };
+  if (message) return;
+
+  if (!isSignInForm) {
+    // Sign Up Logic
+    createUserWithEmailAndPassword(auth, emailVal, passwordVal)
+      .then(() => {
+        return updateProfile(auth.currentUser, {
+          displayName: name,
+        });
+      })
+      .then(() => {
+        const updatedUser = auth.currentUser;
+        dispatch(addUser({
+          uid: updatedUser.uid,
+          email: updatedUser.email,
+          displayName: updatedUser.displayName,
+          photoURL: updatedUser.photoURL || null,
+        }));
+
+      })
+      .catch((error) => {
+        setErrorMessage(error.code + " - " + error.message);
+      });
+  } else {
+    // Sign In Logic
+    signInWithEmailAndPassword(auth, emailVal, passwordVal)
+      .then(() => {
+        const signedInUser = auth.currentUser;
+        dispatch(addUser({
+          uid: signedInUser.uid,
+          email: signedInUser.email,
+          displayName: signedInUser.displayName,
+          photoURL: signedInUser.photoURL || null,
+        }));
+      })
+      .catch((error) => {
+        setErrorMessage(error.code + " - " + error.message);
+      });
+  }
+};
+
 
   return (
     <div className="relative h-screen w-full">
@@ -89,13 +98,13 @@ const Login = () => {
             />
           )}
 
-          <input ref={email}
-            placeholder="Email"
+          <input ref={email} 
+            placeholder="Email" type='email'
             className="p-4 my-4 w-full bg-gray-700 rounded"
           />
 
           <input ref={password}
-            placeholder="Password"
+            placeholder="Password" type='password'
             className="p-4 my-4 w-full bg-gray-700 rounded"
           />
 

@@ -16,6 +16,8 @@
 - Implemented Sign Out
 - Update Profile
 - Fetch movies from TMDB
+- Bug fixes
+- Redirect Users: if logged in redirect to "/browse" else "/"
 
 # Features
 - Login /Signup
