@@ -4,6 +4,7 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
+import { AVATAR, LOGO } from '../utils/constants';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,14 +31,14 @@ const Header = () => {
         if (window.location.pathname !== '/') navigate('/');
       }
     });
-
-    // return () => unsubscribe(); // Cleanup
+    //Unsubscribe when component unmounts
+    return () => unsubscribe(); 
   }, []);
 
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between items-center">
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+        src={LOGO}
         alt="Netflix Logo"
         className="h-10"
       />
@@ -45,9 +46,9 @@ const Header = () => {
       {user && (
         <div className="flex items-center gap-4">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+            src={AVATAR}
             alt="User"
-            className="h-8 w-8 rounded-full"
+            className="h-8 w-8 rounded"
           />
           <button
             onClick={handleSignOut}

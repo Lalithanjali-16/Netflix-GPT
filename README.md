@@ -18,6 +18,8 @@
 - Fetch movies from TMDB
 - Bug fixes
 - Redirect Users: if logged in redirect to "/browse" else "/"
+- Unsubscribed to the onAuthStateChanged callback
+- Added hardcoded values to the constants file
 
 # Features
 - Login /Signup
