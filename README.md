@@ -31,7 +31,11 @@
 - Embedded the youtube video and made it run
 - Tailwind for maincontainer
 - Build Secondary component
-- 
+- Build Movie List
+- Build Movie Card
+- TMDB Image CDN URL
+- Made the Browser page amazing with Tailwind
+- Custom hooks for all movie lists
 
 # Features
 - Login /Signup
