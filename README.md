@@ -20,6 +20,18 @@
 - Redirect Users: if logged in redirect to "/browse" else "/"
 - Unsubscribed to the onAuthStateChanged callback
 - Added hardcoded values to the constants file
+- Register TMDB API & create an app & get access token
+- Get Data from TNDB now playing movies list API
+- Custom Hook for Now Playing Movies
+- Create MovieSlice
+- Update store with Movies data
+- Planning for MainContainer and secondary container
+- Fetch Data for trailer video
+- Update store with trailer video data
+- Embedded the youtube video and made it run
+- Tailwind for maincontainer
+- Build Secondary component
+- 
 
 # Features
 - Login /Signup
