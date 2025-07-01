@@ -37,6 +37,9 @@
 - Made the Browser page amazing with Tailwind
 - Custom hooks for all movie lists
 - GPT Search Feature
+- GPT Search Bar
+- ⭐Multi-language Feature in our App
+- Integrate GPT APIs
 
 # Features
 - Login /Signup
