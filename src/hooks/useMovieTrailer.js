@@ -22,6 +22,7 @@ const useMovieTrailer = (movieId) => {
 
   useEffect(() => {
     if (movieId) getMoviesBackground();
+  
   }, [movieId]);
 
   return trailer;
