@@ -20,7 +20,7 @@ const useHorrorMovies = () => {
   };
 
   useEffect(() => {
-    if(!horrorMovies)getHorrorMovies();
+    if(horrorMovies.length === 0)getHorrorMovies();
   }, []);
 };
 

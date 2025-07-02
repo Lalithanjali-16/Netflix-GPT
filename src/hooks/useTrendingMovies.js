@@ -18,8 +18,9 @@ const useTrendingMovies = () => {
   };
 
   useEffect(() => {
-    if(!trendingMovies)getTrendingMovies();
-  }, []);
+  if (trendingMovies.length === 0) getTrendingMovies();
+}, []);
+
 };
 
 export default useTrendingMovies;
