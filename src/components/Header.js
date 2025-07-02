@@ -23,19 +23,18 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+  const unsubscribe = onAuthStateChanged(auth, (user) => {
+    if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
         if (window.location.pathname === '/') navigate('/browse');
-      } else {
+    } else {
         dispatch(removeUser());
         if (window.location.pathname !== '/') navigate('/');
-      }
-    });
-    //Unsubscribe when component unmounts
-    return () => unsubscribe(); 
-  }, []);
+    }
+      });
+      return () => unsubscribe();
+    }, [dispatch, navigate]); 
 
   const handleGPTSearchClick = () =>{
     //Toggle GPT Search
