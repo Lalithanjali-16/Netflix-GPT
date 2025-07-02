@@ -58,7 +58,6 @@ const GPTSearchBar = () => {
 
       console.log("TMDB Results:", tmdbResults);
 
-      // ✅ Dispatch inside the function after receiving results
       dispatch(
         addGptMovieResult({
           movieNames: responseMovies,
