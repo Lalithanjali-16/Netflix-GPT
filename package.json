@@ -18,35 +18,33 @@
     "together-ai": "^0.16.0",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "autoprefixer": "^10.4.21",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.5.6",
+    "react-router-dom": "^7.6.2",
+    "tailwindcss": "^3.4.17"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@reduxjs/toolkit": "^2.8.2",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "react-router-dom": "^7.6.2",
-    "tailwindcss": "^3.4.17"
-  }
+  "homepage": "https://Lalithanjali-16.github.io/Netflix-GPT"
+
 }
