@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import lang from '../utils/languageConstants';
 import together from "../utils/together";
 import { API_OPTIONS } from '../utils/constants';
-import { addGptMovieResult } from '../utils/gptSlice'; // ⬅️ Make sure to import this action
+import { addGptMovieResult } from '../utils/gptSlice'; 
+import { useRef } from 'react';
 
 const GPTSearchBar = () => {
   const langKey = useSelector(store => store.config.lang);
