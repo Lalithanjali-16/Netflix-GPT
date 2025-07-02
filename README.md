@@ -40,6 +40,12 @@
 - GPT Search Bar
 - ⭐Multi-language Feature in our App
 - Integrate GPT APIs
+- Fetched moviesuggestions from TMDB
+- Created gptSlice and added data
+- Reused MovieList component to make movie suggestion container
+- Memoization
+- Added .env file
+
 
 # Features
 - Login /Signup

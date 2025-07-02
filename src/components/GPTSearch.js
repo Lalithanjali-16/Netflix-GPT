@@ -1,4 +1,3 @@
-import React from 'react';
 import GPTSearchBar from './GPTSearchBar';
 import GPTMovieSuggestions from './GPTMovieSuggestions';
 import background from '../the_netflix_login_background.jpg';
