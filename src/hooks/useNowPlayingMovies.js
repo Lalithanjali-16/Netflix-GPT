@@ -1,15 +1,12 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { API_OPTIONS } from '../utils/constants';
 import { addNowPlayingMovies } from '../utils/moviesSlice';
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
-  const nowPlayingMovies = useSelector((store) => store.movies.nowPlayingMovies);
 
   useEffect(() => {
-    if (nowPlayingMovies.length > 0) return;
-
     const getNowPlayingMovies = async () => {
       try {
         const response = await fetch(
@@ -17,14 +14,15 @@ const useNowPlayingMovies = () => {
           API_OPTIONS
         );
         const json = await response.json();
-        dispatch(addNowPlayingMovies(json.results));
+        dispatch(addNowPlayingMovies(json?.results || []));
       } catch (err) {
         console.error('Failed to fetch now playing movies:', err);
       }
     };
 
     getNowPlayingMovies();
-  }, [nowPlayingMovies.length, dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 export default useNowPlayingMovies;

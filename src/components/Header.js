@@ -1,12 +1,10 @@
-import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, removeUser } from '../utils/userSlice';
-import { AVATAR, LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
+import { AVATAR, SUPPORTED_LANGUAGES } from '../utils/constants';
 import { toggleGptSearchView } from '../utils/gptSlice';
 import { changeLanguage } from '../utils/configSlice';
-import { useEffect } from 'react';
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,20 +20,6 @@ const Header = () => {
       });
   };
 
-  useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, (user) => {
-    if (user) {
-        const { uid, email, displayName } = user;
-        dispatch(addUser({ uid, email, displayName }));
-        if (window.location.pathname === '/') navigate('/browse');
-    } else {
-        dispatch(removeUser());
-        if (window.location.pathname !== '/') navigate('/');
-    }
-      });
-      return () => unsubscribe();
-    }, [dispatch, navigate]); 
-
   const handleGPTSearchClick = () =>{
     //Toggle GPT Search
     dispatch(toggleGptSearchView());
@@ -45,12 +29,10 @@ const Header = () => {
 };
 
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between items-center">
-      <img
-        src={LOGO}
-        alt="MovieGPT Logo"
-        className="h-10"
-      />
+    <div className="absolute top-0 left-0 px-8 py-4 bg-gradient-to-b from-black/80 z-10 w-full flex justify-between items-center">
+      <h1 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-500 drop-shadow-lg">
+        MovieGPT
+      </h1>
 
       {user && (
         <div className="flex items-center gap-4">

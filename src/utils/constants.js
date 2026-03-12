@@ -1,17 +1,18 @@
-import logo from '../logo_image.png';
+import logo from "../logo_image.png";
+
 export const LOGO = logo;
-export const AVATAR = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+export const AVATAR =
+  "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
 export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5Yjk3ZjYzYjJhMmQ2OTZhYWE2MGEwOTQ2YTFmMzE1YSIsIm5iZiI6MTc0NzcyMTI2OC41NjMsInN1YiI6IjY4MmMxYzM0ZjVjYThhYzRhNjJmMGVjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kI92MjzPkGXI6M-4foi3O3OTMMWhnUPrd57r-v3anfY"
-  }
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_BEARER,
+  },
 };
 
-export const API_KEY = "9b97f63b2a2d696aaa60a0946a1f315a";
+export const API_KEY = process.env.REACT_APP_TMDB_KEY;
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
 
@@ -21,7 +22,7 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "telugu", name: "Telugu" },
   { identifier: "tamil", name: "Tamil" },
   { identifier: "malayalam", name: "Malayalam" },
-  { identifier: "spanish", name: "Spanish" }
+  { identifier: "spanish", name: "Spanish" },
 ];
 
 export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

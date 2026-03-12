@@ -8,7 +8,7 @@ const useUpcomingMovies = () => {
   const upcomingMovies = useSelector((store) => store.movies.upcomingMovies); // ✅ Fixed key
 
   useEffect(() => {
-    if (upcomingMovies.length > 0) return;
+    if (upcomingMovies?.length > 0) return;
 
     const getUpcomingMovies = async () => {
       try {
@@ -24,7 +24,7 @@ const useUpcomingMovies = () => {
     };
 
     getUpcomingMovies();
-  }, [upcomingMovies.length, dispatch]); 
+  }, [upcomingMovies, dispatch]); 
 };
 
 export default useUpcomingMovies;

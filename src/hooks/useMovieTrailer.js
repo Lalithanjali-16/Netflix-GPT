@@ -18,8 +18,11 @@ const useMovieTrailer = (movieId) => {
         );
         const json = await response.json();
 
-        const filteredData = json.results.filter((video) => video.type === 'Trailer');
-        const trailer = filteredData.length > 0 ? filteredData[0] : json.results[0];
+        const results = json?.results;
+        if (!results || results.length === 0) return;
+
+        const filteredData = results.filter((video) => video.type === 'Trailer');
+        const trailer = filteredData.length > 0 ? filteredData[0] : results[0];
 
         dispatch(addTrailerVideo(trailer));
       } catch (error) {

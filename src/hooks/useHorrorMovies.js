@@ -8,7 +8,7 @@ const useHorrorMovies = () => {
   const horrorMovies = useSelector((store) => store.movies.horrorMovies);
 
   useEffect(() => {
-    if (horrorMovies.length > 0) return;
+    if (horrorMovies?.length > 0) return;
 
     const getHorrorMovies = async () => {
       try {
@@ -17,14 +17,14 @@ const useHorrorMovies = () => {
           API_OPTIONS
         );
         const data = await response.json();
-        dispatch(addHorrorMovies(data.results));
+        dispatch(addHorrorMovies(data?.results || []));;
       } catch (error) {
         console.error('Failed to fetch horror movies:', error);
       }
     };
 
     getHorrorMovies();
-  }, [horrorMovies.length, dispatch]);
+  }, [horrorMovies, dispatch]);
 };
 
 export default useHorrorMovies;
