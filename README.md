@@ -1,4 +1,9 @@
-# Netflix-GPT
+# Movie GPT 🎬
+
+⚠️ Disclaimer  
+This is a personal project built for educational purposes.  
+It is not affiliated with Netflix.
+
 
 - Create React App
 - Configured TailwindCSS
