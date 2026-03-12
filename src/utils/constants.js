@@ -1,5 +1,6 @@
-export const LOGO = "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg";
-export const AVATAR = "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
+import logo from '../logo_image.png';
+export const LOGO = logo;
+export const AVATAR = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
 export const API_OPTIONS = {
   method: "GET",

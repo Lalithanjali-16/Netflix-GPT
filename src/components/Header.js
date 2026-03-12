@@ -48,7 +48,7 @@ const Header = () => {
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between items-center">
       <img
         src={LOGO}
-        alt="Netflix Logo"
+        alt="MovieGPT Logo"
         className="h-10"
       />
 
