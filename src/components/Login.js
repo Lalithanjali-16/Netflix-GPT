@@ -76,7 +76,7 @@ const Login = () => {
 
       <div className="absolute inset-0 -z-10">
         <img
-          alt="Netflix Background"
+          alt="Movie app Background"
           src={background}
           className="w-full h-full object-cover"
         />
@@ -119,8 +119,13 @@ const Login = () => {
             onClick={toggleforSignIn}
           >
             {isSignInForm
-              ? 'New to Netflix? Sign Up Now'
-              : 'Already Registered? Sign In Now'}
+              ? 'New here? Sign Up'
+              : 'Already registered? Sign In'}
+          </p>
+
+          <p className="text-xs text-gray-400 text-center mt-4">
+          This is a personal project built for educational purposes.
+          It is not affiliated with Netflix.
           </p>
         </form>
       </div>
