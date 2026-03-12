@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Header from './Header';
-import background from '../the_netflix_login_background.jpg';
+import background from '../the_movie_login_background.jpg';
 import {checkValidateData} from '../utils/validate';
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase';

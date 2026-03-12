@@ -1,6 +1,6 @@
 import GPTSearchBar from './GPTSearchBar';
 import GPTMovieSuggestions from './GPTMovieSuggestions';
-import background from '../the_netflix_login_background.jpg';
+import background from '../the_movie_login_background.jpg';
 
 const GPTSearch = () => {
   return (
